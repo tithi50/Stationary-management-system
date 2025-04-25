@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class StationeryManagementSystem {
+    public static void main(String[] args) {
+        InventoryManager manager = new InventoryManager();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\nStationery Management System");
+            System.out.println("1. Add Item");
+            System.out.println("2. View Item");
+            System.out.println("3. Update Item");
+            System.out.println("4. Delete Item");
+            System.out.println("5. Add Category");
+            System.out.println("6. View Category");
+            System.out.println("7. Record Stock In");
+            System.out.println("8. Record Stock Out");
+            System.out.println("9. View Low Stock Items");
+            System.out.println("10. Search Items");
+            System.out.println("11. Generate Stock Report");
+            System.out.println("0. Exit");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    // ... (Get item details from user and call manager.addItem())
+                    break;
+                case 2:
+                    System.out.print("Enter item ID to view: ");
+                    int viewId = scanner.nextInt();
+                    scanner.nextLine();
+                    StationeryItem item = manager.viewItem(viewId);
+                    if (item != null) {
+                        System.out.println(item);
+                    } else {
+                        System.out.println("Item not found.");
+                    }
+                    break;
+                // ... (Implement other cases)
+                case 0:
+                    System.out.println("Exiting system.");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
